@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Js Bin</title>
+</head>
+<body>
+<h1>
+    Sample Screen:
+</h1>
+<input type="text" id="txtValue" placeholder="Nhập giá trị"/>
+<input type="button" id="btnAdd" value="Add" onclick="addElementToArray();" />
+<input type="button" value="Display" id="btnDisplay" onclick="displayArray();" />
+<div id="result"></div>
+
+<script>
+    let array = [];
+
+    function addElementToArray() {
+        const inputElement = document.getElementById("txtValue");
+
+        const newValue = inputElement.value;
+
+        if (newValue.trim() === "") {
+            alert("Vui lòng nhập giá trị.");
+            return;
+        }
+
+        array.push(newValue);
+
+        alert("Element: " + newValue + " Added at index " + (array.length - 1));
+
+        inputElement.value = "";
+
+        inputElement.focus();
+    }
+
+    function displayArray() {
+        let outputHTML = "<hr/>";
+        if (array.length === 0) {
+            outputHTML += "Mảng rỗng.";
+        } else {
+            for (let i = 0; i < array.length; i++) {
+                outputHTML += "Element " + i + " = " + array[i] + "<br/>";
+            }
+        }
+        document.getElementById("result").innerHTML = outputHTML;
+    }
+</script>
+</body>
+</html>
